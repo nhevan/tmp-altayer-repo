@@ -31,6 +31,6 @@ http://localhost:9001
 
 # Locations for outputs
 ```sh
-Build folder containts html compiled and built
+Compiled folder containts html compiled and built
 assets folder contains JS/CSS etc for copying into web solution
 ```
