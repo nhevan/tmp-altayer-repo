@@ -1,23 +1,33 @@
 .brand-maserati-container {
     .brand-content-row {
         &:first-child {
-            margin-top: 5rem;
-            margin-bottom: 5rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
         }
         .thumbnail {
             img {
                 opacity: 0.3;
+                display: block;
+                margin: 0 auto;
+                width: auto;
+                max-height: 30vh;
             }
         }
 
         .thumbnail.active {
             img {
                 opacity: 1;
+                display: block;
+                margin: 0 auto;
+                width: auto;
+                max-height: 40vh;
             }
         }
 
         .label {
             p {
+                margin-top: 0;
+                margin-bottom: 10px;
                 text-align: center;
                 color: #FD5204;
                 font-size: 1.4rem;
