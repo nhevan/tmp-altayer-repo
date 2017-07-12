@@ -11,9 +11,7 @@ pipelines:
         caches:
           - node
         script: # Modify the commands below to build your repository.
-          - npm install grunt-cli -g
-          - npm install bower -g
-		  - npm install
+          - npm install
           - bower install
           - grunt install --force
           - grunt
