@@ -14,6 +14,6 @@ pipelines:
           - npm install grunt-cli -g
           - npm install bower -g
           - npm install
-          - bower install
+          - bower install --allow-root
           - grunt install --force
           - grunt
