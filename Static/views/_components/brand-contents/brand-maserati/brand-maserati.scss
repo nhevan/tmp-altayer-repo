@@ -53,9 +53,9 @@
                 text-align: center;
                 border-radius: 4px;
                 box-shadow: 0 0 5px #454545;
-                display: flex;
+                display: table;
                 align-items: center;
-                min-height: 6rem;
+                height: 6rem;
                 cursor: pointer;
                 //visibility: hidden;
                 &:first-child {
@@ -70,6 +70,8 @@
                 span {
                     width: 100%;
                     text-align: center;
+                    display: table-cell;
+                    vertical-align: middle;
                 }
             }
         }
@@ -282,7 +284,7 @@
                 flex-direction: column;
                 .btn {
                     width: calc(100% - 10px);
-                    min-height: 5rem;
+                    height: 5rem;
                 }
 
                 .btn-group {
