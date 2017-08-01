@@ -233,7 +233,7 @@
     }
 
     .g-recaptcha {
-        // margin-bottom: rem(20px);
+        margin-bottom: rem(20px);
 
         @include respond-to-max(342px) {
             margin-left: rem(-10px);

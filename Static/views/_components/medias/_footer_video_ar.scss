@@ -1,18 +1,9 @@
 .video-footer-block {
     .news-event-container {
-        padding-right: rem(20px);
         h2 {
-            width:auto;
-            background:rgba(0,0,0,0.6);
-            padding:10px;
             @include rtl() {
                 line-height: 1.2;
             }
-        }
-        p {            
-            width:auto;
-            background:rgba(0,0,0,0.6);
-            padding:10px;
         }
         @include respond-to-min($tabletSize) {
             @include rtl() {
@@ -37,8 +28,6 @@
         }   
 
         .date-picker-btn {
-            background: rgba(0,0,0,0.6);
-            padding: 10px;
             i {
                 @include rtl() {
                     margin-left: rem(10px);

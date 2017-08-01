@@ -1,6 +1,5 @@
 .featured-container {
     .img-background-contents {
-        
         .readmore {
             @include verticle-middle();
             display: inline-block;
@@ -16,10 +15,9 @@
             @include latoBlack();
             text-transform: uppercase;
             letter-spacing: 1px;
-            background-color:#fff;
-            color:$blueTextColor;
             &:hover {
-                @extend %white_button_hover_state;
+                background: #fff;
+                color: $blueTextColor;
             }
             @include respond-to-min($tabletSize) {
                 padding: rem(12px 10px);
@@ -53,11 +51,8 @@
                     }
                 }
             }
-           
         }
     }
-
-
 
     .common-block.img-background-block .img-background-contents {
         padding: rem(45px 27px);

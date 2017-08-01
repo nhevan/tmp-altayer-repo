@@ -247,7 +247,7 @@
     @include respond-to-min($tabletSize) {
         padding-bottom: rem(50px);
     }
-    .input-selection-container, .g-recaptcha {
+    .input-selection-container {
         margin-bottom: rem(20px);
 		&:first-child {
 			/*margin-top: 3px;*/

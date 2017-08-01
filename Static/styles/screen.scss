@@ -27,17 +27,3 @@
 .clone.btnToggleOn {
     background-position: 0 -30px;
 }
-.hide-slider{
-    min-height: 1px;
-
-    @include respond-to-min($tabletSize) {
-        min-height: 0;
-    }
-
-    @include respond-to-min($desktopSize) {
-        min-height: 90px;
-    }
-}
-.hide-slider-editmode{
-    min-height: 0px;
-}

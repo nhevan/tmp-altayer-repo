@@ -21,6 +21,7 @@
         position: absolute;
         top: -40px;
         letter-spacing: 2px;
+
         @include respond-to-min($tabletSize) {
             top: -46px;
             font-size: rem(16px);
@@ -100,6 +101,7 @@
                         line-height: rem(22px);
                     }
                 }
+
 
                 @include respond-to-min($laptopSize) {
                     padding: 30px 40px;
@@ -217,9 +219,6 @@
 
         .img-background-contents {
             p {
-                width: auto;
-                background:rgba(0,0,0,0.6);
-                padding:10px;               
                 @include latoNormal();
                 font-size: rem(25px);
                 line-height: rem(30px);
@@ -355,14 +354,9 @@
                 line-height: rem(18px);
                 font-style: italic;
                 font-size: rem(14px);
-                background-color: #fff;
-                color: $blueTextColor;
                 &:hover {
-                    @extend %white_button_hover_state;
+                    //@extend %normal_button_hover_state;
                 }
-                // &:hover {
-                //     //@extend %normal_button_hover_state;
-                // }
                 @include respond-to-min($tabletSize) {
                     font-size: rem(18px);
 

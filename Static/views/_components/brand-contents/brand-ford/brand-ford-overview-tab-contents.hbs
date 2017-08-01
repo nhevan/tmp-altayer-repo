@@ -4,56 +4,141 @@ title: "Brand Ford Overview Tab Contents"
 <div class="brand-container brand-ford-container">
     {{> brand-tabs brand-ford-tabs }}
 
-    <div id="brand_content_container">
+    <div id="overview-tab-ford" data-require="base/brand_ford_overview">
         <div>
             <div class="brand-tabs-contents double-container-gutter container-fluid tab-contents">
-                <div class="row text-contents-row double-row-gutter">
-                    <div class="col-xs-12 double-column-gutter">
-                        <p>This is brand overview description text lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse ut purus. Suspendisse tristique. Cras et sem at odio porttitor mattis. Donec dignissim ornare tortor. Donec lectus turpis, tempor id, cursus vitae, eleifend in, risus. Aenean turpis. Mauris ultricies quam malesuada ligula. </p>
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 col-md-3 col-md-offset-3 double-column-gutter desktop-only">
+                        <div class="overview-content-block">
+                            <div class="thumbnail idle">
+                                <img src="/assets/img/ford/f-150.jpg" alt="f-150"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-3 double-column-gutter desktop-only">
+                        <div class="overview-content-block">
+                            <div class="thumbnail idle">
+                                <img src="/assets/img/ford/f-150-r.jpg" alt="f-150-r"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="row brand-content-row double-row-gutter">
-                    <div class="col-xs-12 col-sm-4 col-md-4 double-column-gutter">
+                    <div class="col-xs-12 col-md-3 double-column-gutter desktop-only">
                         <div class="overview-content-block">
-                            <div class="thumbnail">
-                                <a href="#"><img src="/assets/img/brand-overview-img.jpg" alt="" /></a>
-                            </div>
-                            <div class="block-overview">
-                                <a href="#" title="">
-                                    <h3>EXPLORE</h3>
-                                    <h3>the new model lineup</h3>
-                                </a>
+                            <div class="thumbnail idle">
+                                <img src="/assets/img/ford/edge.jpg" alt="edge"/>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 double-column-gutter">
+                    <div class="col-xs-12 col-md-6 double-column-gutter">
                         <div class="overview-content-block">
-                            <div class="thumbnail">
-                                <a href="#"><img src="/assets/img/brand-overview-img2.jpg" alt="" /></a>
+                            <div class="thumbnail active">
+                                <img src="/assets/img/ford/mustang.jpg" alt="mustang"/>
                             </div>
-                            <div class="block-overview">
-                                <a href="#" title="">
-                                    <h3>EXPLORE</h3>
-                                    <h3>CERTIFIED PRE-OWNED<br /> VEHICLES</h3>
-                                </a>
+                            <div class="label">
+                                <p>Mustang</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-4 col-md-4 double-column-gutter">
+                    <div class="col-xs-12 col-md-3 double-column-gutter desktop-only">
                         <div class="overview-content-block">
-                            <div class="thumbnail">
-                                <a href="#"><img src="/assets/img/brand-overview-img3.jpg" alt="" /></a>
+                            <div class="thumbnail idle">
+                                <img src="/assets/img/ford/explorer.jpg" alt="explorer"/>
                             </div>
-                            <div class="block-overview">
-                                <a href="#" title="">
-                                    <h3>discover</h3>
-                                    <h3>after sales services</h3>
-                                </a>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 first">
+                        <div class="btn-group">
+                            <a class="btn" target="#scoop"><span>Scoop Kits</span></a>
+                            <a class="btn" target="#protection"><span>Protection</span></a>
+                            <a class="btn" target="#spoiler"><span>Spoilers</span></a>
+                            <a class="btn" target="#charger"><span>Supercharger</span></a>
+                            <a class="btn" target="#kits"><span>Exhaust Kit</span></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 second" id="scoop">
+                        <div class="btn-group">
+                            <a data="#modal-one" class="btn"><span>Hood Scoop Kit</span></a>
+                            <a data="#modal-two" class="btn"><span>Quarter Panel Scoop Kit</span></a>
+                            <a data="#modal-three" class="btn"><span>Quarter Window Scoop Kit</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 second" id="protection">
+                        <div class="btn-group">
+                            <a data="#modal-four" class="btn"><span>Floor Mats</span></a>
+                            <a data="#modal-five" class="btn"><span>Cargo Area Protector - Without Subfwoofer</span></a>
+                            <a data="#modal-six" class="btn"><span>Cargo Area Protector - With Subwoofer</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 second" id="spoiler">
+                        <div class="btn-group">
+                            <a data="#modal-seven" class="btn"><span>Rear Decklid, Blade-Style, Convertible</span></a>
+                            <a data="#modal-eight" class="btn"><span>Rear Decklid, Blade-Style, Cupe</span></a>
+                            <a data="#modal-nine" class="btn"><span>Shelby GT350 Track Back, Absolute Black</span></a>
+                            <a data="#modal-ten" class="btn"><span>Rear Spoiler (Coupe Only)</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 second" id="charger">
+                        <div class="btn-group">
+                            <a data="#modal-eleven" class="btn"><span>Supercharger-Phase-1</span></a>
+                            <a data="#modal-twelve" class="btn"><span>Supercharger-Phase-2</span></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 second" id="kits">
+                        <div class="btn-group">
+                            <a target="#kit-one" class="btn"><span>ROUSH V8 Exhaust Kit</span></a>
+                            <a target="#kit-two" class="btn"><span>Quad Tip Exhaust Kit - Cupe</span></a>
+                            <a target="#kit-two" class="btn"><span>Quad Tip Exhaust Kit - Convertible</span></a>
+                            <a target="#kit-two" class="btn"><span>Quad Tip Active Exhaust Kit - Cupe</span></a>
+                            <a target="#kit-two" class="btn"><span>Quad Tip Active Exhaust Kit - Convertible</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 third" id="kit-one">
+                        <div class="btn-group">
+                            <a data="#modal-thirteen" class="btn"><span>Exhaust Kit - Round Tip (304SS)</span></a>
+                            <a data="#modal-fourteen" class="btn"><span>V8 Cold Air Kit</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row brand-content-row double-row-gutter">
+                    <div class="col-xs-12 third" id="kit-two">
+                        <div class="btn-group">
+                            <a data="#modal-fifteen" class="btn"><span>Quad Tip (Active Ready)</span></a>
+                            <a data="#modal-sixteen" class="btn"><span>Rear Valance Kit - With Back-up Sensor</span></a>
+                            <a data="#modal-seventeen" class="btn"><span>Rear Valance Kit - Without Back-up Sensor</span></a>
+                            <a data="#modal-eighteen" class="btn"><span>V8 Cold Air Kit</span></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{> brand-modals brand-ford-modals }}
 </div>

@@ -1,4 +1,4 @@
-﻿{
+{
     "items": [
         {
             "text": "New cars",
@@ -73,7 +73,7 @@
             ]
         },
         {
-            "text": "News & Events",
+            "text": "Events",
             "url": "#",
             "submenu": [
                 {

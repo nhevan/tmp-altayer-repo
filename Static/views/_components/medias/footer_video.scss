@@ -3,7 +3,8 @@
 .video-footer-block {
     position: relative;
     overflow: hidden;
-   
+    padding: 0;
+
     .row {
         margin: 0;
     }
@@ -40,7 +41,6 @@
         padding-bottom: rem(20px);
         padding-left: rem(20px);
         padding-right: rem(20px);
-            
 
         @include respond-to-min($tabletSize) {
             position: absolute;
@@ -67,9 +67,6 @@
             line-height: rem(29px);
             margin: 0;
             letter-spacing: rem(0.5px);
-            width:auto;
-            background:rgba(0,0,0,0.6);
-            padding:10px;
 
             @include respond-to-min($tabletSize) {
                 font-size: rem(26px);
@@ -95,9 +92,6 @@
             letter-spacing: rem(0.5px);
             display: block;
             font-weight: 300;
-            width:auto;
-            background:rgba(0,0,0,0.6);
-            padding:10px;
 
             @include respond-to-min($tabletSize) {
                 font-size: rem(18px);
@@ -141,9 +135,9 @@
                 font-size: rem(11px);
             }
         }
-       
-        .date-picker-btn {            
-            @include arial();            
+
+        .date-picker-btn {
+            @include arial();
             font-weight: 800;
             font-size: rem(20px);
             color: #fff;
@@ -151,9 +145,6 @@
             display: block;
             margin-bottom: rem(20px);
             line-height: 1;
-            width:auto;
-            background:rgba(0,0,0,0.6);
-            padding:10px;
 
             i {
                 margin-right: rem(10px);
@@ -164,10 +155,10 @@
         }
 
         .read-more {
-           @include arial();
+            @include latoBlack();
             font-size: rem(12px);
             text-transform: uppercase;
-            //color: #fff;
+            color: #fff;
             text-decoration: none;
             border: rem(1px solid #fff);
             letter-spacing: 1px;
@@ -176,10 +167,8 @@
             height: rem(30px);
             padding: rem(0 15px);
             border-radius: rem(3px);
-            background-color: #fff;
-            color: $blueTextColor;
             &:hover {
-                @extend %white_button_hover_state;
+                @extend %normal_button_hover_state;
             }
             &.hidden-mobile {
                 display: none;

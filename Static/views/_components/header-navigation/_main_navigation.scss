@@ -1,4 +1,3 @@
-
 /*-- main navigator--*/
 .main-navigation {
     display: none;
@@ -220,19 +219,19 @@
                 }
 
                 @include respond-to-min($desktopSize) {
-                    padding: rem(20px 13px);
+                    padding: rem(20px 15px);
                     font-size: rem(12px);
                     line-height: rem(12px);
                 }
 
                 @include respond-to-min($laptopSize) {
-                    padding: rem(20px 20px);
+                    padding: rem(20px 30px);
                     font-size: rem(14px);
                     line-height: rem(14px);
                 }
 
                 @include respond-to-min($largeSize) {
-                    padding: rem(20px 30px);
+                    padding: rem(20px 40px);
                 }
             }
             /*-- top navigation search --*/

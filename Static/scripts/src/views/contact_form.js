@@ -24,7 +24,7 @@
                 formValidation.init(this.$el);
                 this.checkSelectedEnquiry();
                 this.registEvents();
-                if ($('#SelectBrand').val() != '') {
+                if ($('#SelectBrand').val() != '0') {
                     $('#SelectBrand').change();
                 }
             },
@@ -40,7 +40,7 @@
             },
             brandChange: function (element) {
                 var brandId = element.currentTarget.value;
-                if (brandId != '') {
+                if (brandId != '0') {
                     var modelIdFromUrl = parseInt($('#modelIdFromUrl').val());
                     var selectedVehicleEnquiry = this.$el.find('#SelectEnquiry').val();
 
@@ -78,7 +78,7 @@
             },
             checkSelectedEnquiry: function () {
                 var selectedEnquiryType = this.$el.find('#Enquiry_Type').val();
-                var siblings = this.$el.find('#Enquiry_Type').closest('.vehicle-information').children().not(':first');
+                var siblings = this.$el.find('#Enquiry_Type').parent().siblings();
                 siblings.addClass('input-hidden');
 
                 if (selectedEnquiryType == 'Vehicle Enquiry') {
@@ -89,14 +89,8 @@
                         }
                     }
 
-                    // $('#AdditionalMessage').rules('add','required');
-                    // $('#AdditionalMessage').parent().addClass('is-required');
-                    this.addValidation($('#AdditionalMessage'));
-
-                    // $('#Message').rules('remove','required');
-                    // $('#Message').parent().removeClass('is-required');
-                    // $('#Message').removeClass('invalid');
-                    this.removeValidation($('#Message'));
+                    $('input[name="additionalmessage"]').attr('required','required');
+                    $('input[name="additionalmessage"]').parent().addClass('is-required') ;
                 }
                 else {
                     for (var i = 0; i < siblings.length; i++) {
@@ -105,24 +99,9 @@
                             siblings.eq(i).removeClass('input-hidden');
                         }
                     }
-                    // $('#AdditionalMessage').rules('remove','required');
-                    // $('#AdditionalMessage').parent().removeClass('is-required');
-                    this.removeValidation($('#AdditionalMessage'));
-
-                    // $('#Message').rules('add','required');
-                    // $('#Message').parent().addClass('is-required');
-                    this.addValidation($('#Message'));
+                    $('input[name="additionalmessage"]').removeAttr('required');
+                    $('input[name="additionalmessage"]').parent().removeClass('is-required');
                 }
-            },
-            addValidation: function(element){
-                element.rules('add','required');
-                element.parent().addClass('is-required');
-                element.removeClass('invalid');
-            },
-            removeValidation: function(element){
-                element.rules('remove','required');
-                element.parent().removeClass('is-required');
-                element.removeClass('invalid');
             }
         });
     }

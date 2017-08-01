@@ -1,53 +1,26 @@
 ﻿define(['underscore', 'jquery', 'base/modules/custom_select_wrapper', 'base/modules/validator', 'base/modules/analytics', 'base/modules/animate'], function (_, $, customSelectWrapper, validator, analytic, animate) {
     var recaptcha1, recaptcha2;
     var modelText, branchText, isBookService;
-    var recaptcha_loaded = false;
 
     function initReCaptchar() {
-        if(!recaptcha_loaded){
-            if (!window.reCaptchaIsReady) {
-                //console.log('reCaptchaIsReady=false');
-                var timeout = setTimeout(function () {
-                    //console.log('inside setTimeout');
-                    clearTimeout(timeout);
-                    initReCaptchar();
-                }, 1000);
-                return;
-            }
 
-            //console.log('init recaptcha');
-            $('.g-recaptcha').each(function(){
-                var $recaptcha = $(this),
-                    elid = $recaptcha.attr('id'),
-                    sitekey = $recaptcha.attr('data-recaptcha');
-                grecaptcha.render(elid, {
-                    'sitekey': sitekey,
-                    'callback': function(gresponse){
-                        $recaptcha.next().val(gresponse);
-                    },
-                    'expired-callback': function(){
-                        $recaptcha.next().val('');
-                    }
-                });
-            });
-            // if ($("#recaptcha1").length > 0)
-            //     recaptcha1 = grecaptcha.render('recaptcha1', {
-            //         'sitekey': $("#recaptcha1").attr('data-recaptcha'),
-            //         'callback': function(gresponse){
-            //             $('#hiddenRecaptcha').val(gresponse);
-            //         },
-            //         'expired-callback': function(){
-            //             $('#hiddenRecaptcha').val('');
-            //         }
-            //     });
-
-            // if ($("#recaptcha2").length > 0)
-            //     recaptcha2 = grecaptcha.render('recaptcha2', {
-            //         'sitekey': $("#recaptcha2").attr('data-recaptcha')
-            //     });
-
-            recaptcha_loaded = true;
+        if (!window.reCaptchaIsReady) {
+            var timeout = setTimeout(function () {
+                clearTimeout(timeout);
+                initReCaptchar();
+            }, 1000);
+            return;
         }
+
+        if ($("#recaptcha1").length > 0)
+            recaptcha1 = grecaptcha.render('recaptcha1', {
+                'sitekey': $("#recaptcha1").attr('data-recaptcha')
+            });
+
+        if ($("#recaptcha2").length > 0)
+            recaptcha2 = grecaptcha.render('recaptcha2', {
+                'sitekey': $("#recaptcha2").attr('data-recaptcha')
+            });
     }
 
     function addGoogleTagManager(event, data) {
@@ -94,8 +67,6 @@
         }
     }
     function init(container) {
-        //console.log('init form-validation');
-
         var otherBrand = $('#OtherBrand');
         var vehicleBrand = $('#VehicleBrand');
         var vehicleModel = $('#VehicleModel');
@@ -122,36 +93,26 @@
         if ($("#VehicleModel").length > 0 && $("#VehicleModel").val() == 0 && ($("#VehicleModel option") == null || $("#VehicleModel option").length <= 1))
             $("#VehicleModel").attr("data-disabled", true);
 
-        $("#Branches").attr("data-disabled", true);
-        if(($("#VehicleModel").val() > 0) && $(("#VehicleBrand").val())){
-            $("#Branches").attr("data-disabled", false);
-        }
-        
-        
-		
+        if (!vehicleBrand.val())
+            $("#Branches").attr("data-disabled", true);
 
         if ($("#Finance_VehicleModel").length > 0 && $("#Finance_VehicleModel").val() == 0)
             $("#Finance_VehicleModel").attr("data-disabled", true);
 
         customSelectWrapper.init(container);
 
-		//alert("IsbookService:"+isBookService);
-		
-        if (isBookService === undefined) {
-            if (havingOtherBrand) {
-                otherBrand.on('change',
-                    function() {
-                        var otherBrandValue = $(this).val();
-                        if (otherBrandValue && otherBrandValue.trim().length > 0) {
-                            if (havingVehicleBrand) {
-                                vehicleBrand.val('');
-                                vehicleBrand.trigger('change');
-                                customSelectWrapper.updateSelect(vehicleBrand);
-                            }
-                        }
-                    });
-            }
-        }
+        //if (havingOtherBrand) {
+        //    otherBrand.on('change', function () {
+        //        var otherBrandValue = $(this).val();
+        //        if (otherBrandValue && otherBrandValue.trim().length > 0) {
+        //            if (havingVehicleBrand) {
+        //                vehicleBrand.val('');
+        //                vehicleBrand.trigger('change');
+        //                customSelectWrapper.updateSelect(vehicleBrand);
+        //            }
+        //        }
+        //    });
+        //}
 
         if ($("#VehicleBrand").length > 0)
             $("#VehicleBrand").change(function () {
@@ -164,7 +125,7 @@
                         $("#VehicleModel").empty();
                         $("#VehicleModel").append("<option value=\"\">" + modelText + "</option>");
                         $("#Branches").empty();
-                        $("#Branches").append("<option value=\"\">" + branchText + "</option>");                        
+                        $("#Branches").append("<option value=\"\">" + branchText + "</option>");
                         var model = StatesList["model"];
                         var branch = StatesList["branch"];
                         if (model !== undefined) {
@@ -192,9 +153,9 @@
                     $.ajax(CountryOptions);
 
                     // Clear other brand
-                    if (havingOtherBrand) {
-                        otherBrand.val('');
-                    }
+                    //if (havingOtherBrand) {
+                    //    otherBrand.val('');
+                    //}
                 }
                 else {
                     $("#VehicleModel").empty();
@@ -208,7 +169,6 @@
                     $("#Branches").attr("data-disabled", true);
                     customSelectWrapper.updateSelect($("#Branches"));
                 }
-               
             });
 
         if ($("#Finance_VehicleBrand").length > 0)
@@ -241,14 +201,12 @@
                     customSelectWrapper.updateSelect($("#Finance_VehicleModel"));
                 }
             });
-        
-		
-		function htmlEscape(str) {
+        function htmlEscape(str) {
             return String(str)
-                    .replace(/&/g, '&amp;')
-                    .replace(/"/g, '&quot;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;');
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
         }
         (function ($) {
 
@@ -297,12 +255,31 @@
                 date: true
             },
             hiddenRecaptcha: {
-                required: true
+                required: function () {
+                    if (window.reCaptchaIsReady && grecaptcha.getResponse(recaptcha1) == '') {
+                        if ($("#recaptcha1").children("span.messagefillCapcha").length == 0)
+                            $("#recaptcha1").append("<span class=\"messagefillCapcha\" style=\"color: red\">Fill the Captcha</span>");
+                        return true;
+                    } else {
+                        $("span.messagefillCapcha").remove();
+                        return false;
+                    }
+                }
             }
             , hiddenRecaptcha2: {
-                required: true
+                required: function () {
+                    if (window.reCaptchaIsReady && grecaptcha.getResponse(recaptcha2) == '') {
+                        if ($("#recaptcha2").children("span.messagefillCapcha").length == 0)
+                            $("#recaptcha2").append("<span class=\"messagefillCapcha\" style=\"color: red\">Fill the Captcha</span>");
+                        return true;
+                    } else {
+                        $("span.messagefillCapcha").remove();
+                        return false;
+                    }
+                }
             }
         };
+
 
         if (!havingOtherBrand) {
             validatorRule = _.extend(validatorRule, {
@@ -330,25 +307,9 @@
             },
             focusInvalid: false,
             highlight: function (element, errorClass) {
-                var $element = $(element);
-                $element.addClass("invalid");
-                if ($element.is('select')) {
-                    $element.parent().children('.selected-label').addClass("invalid");
-                }
-
-                if($element.attr('id').indexOf('recaptcha') >= 0){
-                    if ($element.prev().children("span.messagefillCapcha").length == 0)
-                        $element.prev().append("<span class=\"messagefillCapcha\" style=\"color: red\">Fill the Captcha</span>");
-                }
-            },
-            unhighlight: function(element, errorClass){
-                var $element = $(element);
-                $element.removeClass("invalid");
-                if ($element.is('select')) {
-                    $element.parent().children('.selected-label').removeClass("invalid");
-                }
-                if($element.attr('id').indexOf('recaptcha') >= 0){
-                    $element.prev().find("span.messagefillCapcha").remove();
+                $(element).addClass("invalid");
+                if ($(element).is('select')) {
+                    $(element).parent().children('.selected-label').addClass("invalid");
                 }
             },
             errorPlacement: function (error, element) {
@@ -391,46 +352,46 @@
                 }
 
                 switch (id) {
-                    case 'RenewInsuranceForm':
-                        event = 'renew-insurance';
+                case 'RenewInsuranceForm':
+                    event = 'renew-insurance';
+                    data = {
+                        'brand': $(form).find('#VehicleBrand option:selected').text(),
+                        'make': $(form).find('#VehicleModel option:selected').text()
+                    };
+                    break;
+                case 'FinanceAndInsuranceForm':
+                    event = 'renew-finance';
+                    data = {
+                        'brand': $(form).find('#Finance_VehicleBrand option:selected').text(),
+                        'make': $(form).find('#Finance_VehicleModel option:selected').text()
+                    };
+                    break;
+                case 'ContactUsForm':
+                    event = 'send-enquiry';
+                    var selectedEnquiryType = $(form).find('#Enquiry_Type').val();
+                    if (selectedEnquiryType == 'Vehicle Enquiry') {
                         data = {
-                            'brand': $(form).find('#VehicleBrand option:selected').text(),
-                            'make': $(form).find('#VehicleModel option:selected').text()
+                            'brand': $(form).find('select[name="brandId"] option:selected').text()
                         };
-                        break;
-                    case 'FinanceAndInsuranceForm':
-                        event = 'renew-finance';
-                        data = {
-                            'brand': $(form).find('#Finance_VehicleBrand option:selected').text(),
-                            'make': $(form).find('#Finance_VehicleModel option:selected').text()
-                        };
-                        break;
-                    case 'ContactUsForm':
-                        event = 'send-enquiry';
-                        var selectedEnquiryType = $(form).find('#Enquiry_Type').val();
-                        if (selectedEnquiryType == 'Vehicle Enquiry') {
-                            data = {
-                                'brand': $(form).find('#SelectBrand option:selected').text()
-                            };
-                        }
-                        break;
-                    case 'BookServicesForm':
-                        event = 'book-service';
-                        data = {
-                            'brand': $(form).find('#VehicleBrand option:selected').text(),
-                            'make': $(form).find('#VehicleModel option:selected').text(),
-                            'year': $(form).find('#ModelYear option:selected').text(),
-                            'branch': $(form).find('#Branches option:selected').text()
-                        };
-                        break;
-                    case 'BookTestDriveForm':
-                        event = 'book-test-drive';
-                        data = {
-                            'brand': $(form).find('#VehicleBrand option:selected').text(),
-                            'make': $(form).find('#VehicleModel option:selected').text(),
-                            'branch': $(form).find('#Branches option:selected').text()
-                        };
-                        break;
+                    }
+                    break;
+                case 'BookServicesForm':
+                    event = 'book-service';
+                    data = {
+                        'brand': $(form).find('#VehicleBrand option:selected').text(),
+                        'make': $(form).find('#VehicleModel option:selected').text(),
+                        'year': $(form).find('select[name="ModelYear"] option:selected').text(),
+                        'branch': $(form).find('#Branches option:selected').text()
+                    };
+                    break;
+                case 'BookTestDriveForm':
+                    event = 'book-test-drive';
+                    data = {
+                        'brand': $(form).find('#VehicleBrand option:selected').text(),
+                        'make': $(form).find('#VehicleModel option:selected').text(),
+                        'branch': $(form).find('#Branches option:selected').text()
+                    };
+                    break;
                 }
 
                 if (event && event.length > 0) {
@@ -452,7 +413,7 @@
                     }
                 }
 
-                form.submit();
+                $(form)[0].submit();
             },
 
             invalidHandler: function (event, validator) {
@@ -467,44 +428,50 @@
             }
         });
 
-		//
 
 
-        $(".forms-need-validation").each(function(){
-            $(this).validate();
+        $("#RenewInsuranceForm").validate({
+            onfocusout: function (element) {
+                if ($(element).valid()) {
+                    $(element).removeClass("invalid");
+                    if ($(element).is('select')) {
+                        $(element).parent().children('.selected-label').removeClass("invalid");
+                    }
+                }
+            }
         });
 
-        // $("#FinanceAndInsuranceForm").validate({
-        //     onfocusout: function (element) {
-        //         if ($(element).valid()) {
-        //             $(element).removeClass("invalid");
-        //             if ($(element).is('select')) {
-        //                 $(element).parent().children('.selected-label').removeClass("invalid");
-        //             }
-        //         }
-        //     }
-        // });
-        // $("#BookTestDriveForm").validate({
-        //     onfocusout: function (element) {
-        //         if ($(element).valid()) {
-        //             $(element).removeClass("invalid");
-        //             if ($(element).is('select')) {
-        //                 $(element).parent().children('.selected-label').removeClass("invalid");
-        //             }
-        //         }
-        //     }
-        // });
+        $("#FinanceAndInsuranceForm").validate({
+            onfocusout: function (element) {
+                if ($(element).valid()) {
+                    $(element).removeClass("invalid");
+                    if ($(element).is('select')) {
+                        $(element).parent().children('.selected-label').removeClass("invalid");
+                    }
+                }
+            }
+        });
+        $("#BookTestDriveForm").validate({
+            onfocusout: function (element) {
+                if ($(element).valid()) {
+                    $(element).removeClass("invalid");
+                    if ($(element).is('select')) {
+                        $(element).parent().children('.selected-label').removeClass("invalid");
+                    }
+                }
+            }
+        });
 
-        // $("#BookServicesForm").validate({
-        //     onfocusout: function (element) {
-        //         if ($(element).valid()) {
-        //             $(element).removeClass("invalid");
-        //             if ($(element).is('select')) {
-        //                 $(element).parent().children('.selected-label').removeClass("invalid");
-        //             }
-        //         }
-        //     }
-        // });
+        $("#BookServicesForm").validate({
+            onfocusout: function (element) {
+                if ($(element).valid()) {
+                    $(element).removeClass("invalid");
+                    if ($(element).is('select')) {
+                        $(element).parent().children('.selected-label').removeClass("invalid");
+                    }
+                }
+            }
+        });
         $("#ContactUsForm").validate({
             ignore: ".input-hidden textarea",
             onfocusout: function (element) {
