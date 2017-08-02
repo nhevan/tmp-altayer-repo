@@ -1,6 +1,8 @@
 .env
-assets
-bower_components
-build
-compiled
-node_modules
+.idea/
+assets/
+bower_components/
+build/
+compiled/
+node_modules/
+Static/scripts/lib/
