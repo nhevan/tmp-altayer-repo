@@ -1,5 +1,15 @@
 define(['jquery'], function ($) {
     function init(container) {
+        $('.brand-tabs__container a').click(function(e) {
+            e.preventDefault();
+
+            $(this).closest('.brand-tabs__container').find('a').removeClass('active').filter(this)
+                .addClass('active');
+
+            var pane = $(this).attr('href');
+            $('#overview-tab-levante').hide().filter(pane).show();
+        });
+
         $('.first .btn').click(function() {
             if (window.innerWidth > 900) {
                 $('.second, .third').hide();
