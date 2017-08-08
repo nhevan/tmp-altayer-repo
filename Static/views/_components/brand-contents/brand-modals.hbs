@@ -8,21 +8,24 @@
                 </a>
             </div>
             <div class="modal-body">
-                <div class="page">
-                    <div class="col-half">
-                        <img src="{{image}}" alt="car-image">
-                        <span>{{imageCaption}}</span>
+                {{#each this.pages}}
+                    <div class="page">
+                        <div class="col-half">
+                            <img src="{{image}}" alt="car-image">
+                            <span>{{imageCaption}}</span>
+                        </div>
+                        <div class="col-half">
+                            <h4>{{cost}}</h4>
+                            <p>{{details}}</p>
+                            <ul>
+                                {{#each this.features}}
+                                    <li>{{ this }}</li>
+                                {{/each}}
+                            </ul>
+                            <p>{{note}}</p>
+                        </div>
                     </div>
-                    <div class="col-half">
-                        <h4>{{cost}}</h4>
-                        <p>{{details}}</p>
-                        <ul>
-                            {{#each this.features}}
-                                <li>{{ this }}</li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ define(['jquery'], function ($) {
                 $('.third .btn').css('background-color', '#170B0D');
                 $(this).css('background-color', '#454545');
                 $(this.getAttribute("target")).show();
-                console.log(this.getAttribute("target"));
+                //console.log(this.getAttribute("target"));
             } else {
                 $('.second, .third').hide();
                 $('.first .btn').css('background-color', '#FD5204');
@@ -17,7 +17,7 @@ define(['jquery'], function ($) {
                 $(this).css('background-color', '#454545');
                 $(this.getAttribute("target")).insertAfter(this);
                 $(this.getAttribute("target")).toggle();
-                console.log(this.getAttribute("target"));
+                //console.log(this.getAttribute("target"));
             }
 
         });
@@ -28,14 +28,14 @@ define(['jquery'], function ($) {
                 $('.second .btn').css('background-color', '#002D6A');
                 $(this).css('background-color', '#454545');
                 $(this.getAttribute("target")).show();
-                console.log(this.getAttribute("target"));
+                //console.log(this.getAttribute("target"));
             } else {
                 $('.third').hide();
                 $('.second .btn').css('background-color', '#002D6A');
                 $(this).css('background-color', '#454545');
                 $(this.getAttribute("target")).insertAfter(this);
                 $(this.getAttribute("target")).toggle();
-                console.log(this.getAttribute("target"));
+                //console.log(this.getAttribute("target"));
             }
 
         });
@@ -43,7 +43,7 @@ define(['jquery'], function ($) {
         $('.third .btn').click(function() {
             $('.third .btn').css('background-color', '#170B0D');
             $(this).css('background-color', '#454545');
-            console.log(this);
+            //console.log(this);
         });
 
         $('.btn').click(function(){
